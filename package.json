@@ -1,0 +1,33 @@
+{
+  "name": "neatio-bridge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ethereum-input-data-decoder": "^0.3.1",
+    "ethers": "^5.0.26",
+    "express": "^4.17.1",
+    "google-protobuf": "^3.14.0",
+    "js-sha3": "^0.8.0",
+    "mysql2": "^2.2.5",
+    "nconf": "^0.11.1",
+    "pino": "^6.11.1",
+    "secp256k1": "^4.0.2",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "neat",
+    "bridge",
+    "contract",
+    "eth"
+  ],
+  "author": "Luckas83",
+  "license": "MIT"
+}
