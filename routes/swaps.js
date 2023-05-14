@@ -1,7 +1,7 @@
 const express = require('express'),
     router = express.Router();
 const uuid = require('uuid');
-const neatio = require('../neatio');
+const neatio = require('../neat');
 const bsc = require('../bsc');
 const {
     utils
