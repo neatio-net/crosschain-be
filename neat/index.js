@@ -13,14 +13,8 @@ const nonceFile = path.join(nonceDir || '', 'nonce.json')
 
 async function setNonce() {
     try {
-        const apiEpochResp = await axios.post(process.env.NEATIO_PROVIDER, {
-            "method": "dna_epoch",
-            "id": 1,
-            "key": process.env.NEATIO_API_KEY,
-            "params": []
-        })
         let apiBalanceResp = await axios.post(process.env.NEATIO_PROVIDER, {
-            "method": "dna_getBalance",
+            "method": "neat_getBalance",
             "id": 1,
             "key": process.env.NEATIO_API_KEY,
             "params": [privateKeyToAddress(process.env.NEATIO_PRIVATE_KEY)]
@@ -74,7 +68,7 @@ exports.send = async function (address, amount, takeFee) {
                 null
             );
             let apiResp = await axios.post(process.env.NEATIO_PROVIDER, {
-                "method": "bcn_sendRawTx",
+                "method": "neat_sendRawTx",
                 "id": 1,
                 "key": process.env.NEATIO_API_KEY,
                 "params": [tx.sign(process.env.NEATIO_PRIVATE_KEY).toHex()]
@@ -101,13 +95,13 @@ exports.isTxConfirmed = async function (transaction) {
             return false
         }
         const bcn_block = await axios.post(process.env.NEATIO_PROVIDER, {
-            "method": "bcn_block",
+            "method": "neat_block",
             "id": 1,
             "key": process.env.NEATIO_API_KEY,
             "params": [transaction.blockHash]
         })
         const bcn_syncing = await axios.post(process.env.NEATIO_PROVIDER, {
-            "method": "bcn_syncing",
+            "method": "neat_syncing",
             "id": 1,
             "key": process.env.NEATIO_API_KEY,
             "params": []
@@ -140,7 +134,7 @@ function isTxActual(tx, date) {
 async function getEpoch() {
     try {
         let apiResp = await axios.post(process.env.NEATIO_PROVIDER, {
-            "method": "dna_epoch",
+            "method": "neat_epoch",
             "id": 1,
             "key": process.env.NEATIO_API_KEY,
             "params": []
@@ -228,7 +222,7 @@ exports.isValidSendTx = async function (transaction, address, amount, date) {
 exports.getTransaction = async function (txHash) {
     try {
         const transaction = await axios.post(process.env.NEATIO_PROVIDER, {
-            "method": "bcn_transaction",
+            "method": "neat_transaction",
             "id": 1,
             "key": process.env.NEATIO_API_KEY,
             "params": [txHash]
