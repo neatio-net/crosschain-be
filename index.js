@@ -3,7 +3,7 @@ const express = require('express'),
     mysql = require('mysql2'),
     cors = require('cors'),
     bodyParser = require('body-parser'),
-    neatio = require('./neatio'),
+    neat = require('./neat'),
     bsc = require('./bsc');
 
 const logger = require('./logger').child({component: "processing"})
